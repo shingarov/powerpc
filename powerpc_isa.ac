@@ -141,11 +141,15 @@ AC_ISA(powerpc) {
 
   ac_instr<X18> mcrxr;
 
+  ac_instr<X23> dcbf, dcbi, dcbt, dcbst, dcbtst, dcbz, icbi;
+
   ac_instr<XL1> crand, crandc, creqv, crnand, crnor, cror, crorc, crxor;
 
   ac_instr<XL2> bcctr, bcctrl, bclr, bclrl;
 
   ac_instr<XL3> mcrf;
+
+  ac_instr<XL4> isync;
 
   ac_instr<XFX1> mfspr;
 
@@ -1189,6 +1193,51 @@ AC_ISA(powerpc) {
     twi.set_asm("tw%[cond]i %reg, %imm", to, ra, si);
     twi.set_decoder(opcd=3);
     twi.set_cycles(1);
+
+
+/*******************************************************/
+/* Context Synchronization                             */
+/*******************************************************/
+
+// Data cache block flush
+    dcbf.set_asm("dcbf %reg, %reg", ra, rb);
+    dcbf.set_decoder(opcd=31, xog=86);
+    dcbf.set_cycles(1);
+
+// Data cache block invalidate
+    dcbi.set_asm("dcbi %reg, %reg", ra, rb);
+    dcbi.set_decoder(opcd=31, xog=470);
+    dcbi.set_cycles(1);
+
+// Data cache block touch
+    dcbt.set_asm("dcbt %reg, %reg", ra, rb);
+    dcbt.set_decoder(opcd=31, xog=278);
+    dcbt.set_cycles(1);
+
+// Data cache block store
+    dcbst.set_asm("dcbst %reg, %reg", ra, rb);
+    dcbst.set_decoder(opcd=31, xog=54);
+    dcbst.set_cycles(1);
+
+// Data cache block touch for store
+    dcbtst.set_asm("dcbtst %reg, %reg", ra, rb);
+    dcbtst.set_decoder(opcd=31, xog=246);
+    dcbtst.set_cycles(1);
+
+// Data cache block zero
+    dcbz.set_asm("dcbz %reg, %reg", ra, rb);
+    dcbz.set_decoder(opcd=31, xog=1014);
+    dcbz.set_cycles(1);
+
+// Instruction cache block invalidate, p.345
+    icbi.set_asm("icbi %reg, %reg", ra, rb);
+    icbi.set_decoder(opcd=31, xog=982);
+    icbi.set_cycles(1);
+
+// Instruction synchronize, p.346
+    isync.set_asm("isync %reg, %reg", ra, rb);
+    isync.set_decoder(opcd=31, xog=150);
+    isync.set_cycles(1);
 
 
 /*******************************************************/
