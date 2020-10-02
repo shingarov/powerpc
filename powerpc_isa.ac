@@ -970,6 +970,7 @@ AC_ISA(powerpc) {
     rlwnm_.set_cycles(1); 
 
     sc.set_asm("sc %imm", lev);
+    sc.set_asm("sc", lev=0);
     sc.set_decoder(opcd=17);
     sc.set_cycles(1); 
 
