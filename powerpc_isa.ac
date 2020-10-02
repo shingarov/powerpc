@@ -587,7 +587,7 @@ AC_ISA(powerpc) {
     lwbrx.set_decoder(opcd=31, xog=534);
     lwbrx.set_cycles(1);
 
-    lwz.set_asm("lwz %imm, %imm (%imm)", rt, d, ra);
+    lwz.set_asm("lwz %reg, %exp (%reg)", rt, d, ra);
     //lwz.set_asm("lba.set_cycles(1); wz %imm, %exp@l(%imm)", rt, d, ra);
     lwz.set_decoder(opcd=32);
     lwz.set_cycles(1); 
@@ -1058,7 +1058,7 @@ AC_ISA(powerpc) {
     stswx.set_decoder(opcd=31, xog=661);
     stswx.set_cycles(1); 
    
-    stw.set_asm("stw %reg, %imm (%reg)", rs, d, ra);
+    stw.set_asm("stw %reg, %exp (%reg)", rs, d, ra);
     stw.set_asm("stw %reg, %exp@l(%reg)", rs, d, ra);
     stw.set_decoder(opcd=36);
     stw.set_cycles(1); 
