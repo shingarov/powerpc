@@ -923,6 +923,7 @@ AC_ISA(powerpc) {
     nor_.set_cycles(1); 
 
     ore.set_asm("or %reg, %reg, %reg", ra, rs, rb);
+    ore.set_asm("nop", ra=0, rs=0, rb=0);
     ore.set_decoder(opcd=31, xog=444, rc=0);
     ore.set_cycles(1); 
 
