@@ -778,6 +778,7 @@ AC_ISA(powerpc) {
     /* INCOMPLETE IMPLEMENTATION! */
     mtspr.set_asm("mtctr %imm", rs, sprf=0x120);
     mtspr.set_asm("mtlr %imm", rs, sprf=0x100);
+    mtspr.set_asm("mtxer %imm", rs, sprf=0x20);
     mtspr.set_asm("mtspr %imm, %imm", sprf, rs);
     mtspr.set_decoder(opcd=31, xog=467);
 
