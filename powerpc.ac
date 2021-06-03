@@ -48,7 +48,7 @@ AC_ARCH(powerpc) {
 	ARCH_CTOR(powerpc) {	
 		ac_isa("powerpc_isa.ac");
         ac_gdb("powerpc.xml");
-		set_endian("big");
+		set_endian("little");
 	};
 
 };

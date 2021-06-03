@@ -818,7 +818,7 @@ AC_ISA(powerpc) {
     mullwo.set_asm("mullwo %reg, %reg, %reg", rt, ra, rb);
     mullwo.set_decoder(opcd=31,oe=1,xos=235,rc=0);
 
-    mullwo_.set_asm("mullw %reg, %reg, %reg", rt, ra, rb);
+    mullwo_.set_asm("mullwo. %reg, %reg, %reg", rt, ra, rb);
     mullwo_.set_decoder(opcd=31,oe=1,xos=235,rc=1);
 
     nand.set_asm("nand %reg, %reg, %reg", ra, rs, rb);
